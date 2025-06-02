@@ -2,3 +2,19 @@
   text-align: center;
 }
 
+.movie-card {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-div{
+   padding: 10px;
+  
+}
+.search-buttons{
+  padding-top: 10px;
+display: flex;
+justify-content: center;
+}

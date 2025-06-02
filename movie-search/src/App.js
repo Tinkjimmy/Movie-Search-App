@@ -1,5 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 const apiKey = process.env.REACT_APP_OMDB_API_KEY;
 
 function App() {
@@ -31,12 +34,24 @@ function App() {
   if (data && data.Search && data.Search.length !== 0) {
     for (let i = 0; i < data.Search.length; i++) {
       paragraphs.push(
-        <div key={data.Search[i].imdbID}>
-          <p>{data.Search[i].Title}</p>
-          <p>{data.Search[i].Year}</p>
-
-          <img src={data.Search[i].Poster}></img>
-        </div>
+        <Col
+          Key={data.Search[i].imdbID}
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          className="mb-4"
+        >
+          <div className="movie-card text-center">
+            <p>{data.Search[i].Title}</p>
+            <p>{data.Search[i].Year}</p>
+            <img
+              src={data.Search[i].Poster}
+              alt={`${data.Search[i].Title} poster`}
+              className="img-fluid"
+            ></img>
+          </div>
+        </Col>
       );
     }
   }
@@ -46,25 +61,49 @@ function App() {
     console.log(`https://www.omdbapi.com/?apikey=76fc6c1e&s=${searchTerm}`);
     setTriggerSearch(!triggerSearch);
   }
-
+  function clearSearch() {
+    setData(null);
+    setSearchTerm("");
+  }
   return (
     <div className="App">
-      <input
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleSearch();
-          }
-        }}
-      ></input>
-      <button onClick={handleSearch}>Search</button>
-
-      <div>
-        {data && data.Search && data.Search.length !== 0
-          ? paragraphs
-          : "What movie are you looking for?"}
+      <div className="search-div">
+        <Form.Control
+          value={searchTerm}
+          placeholder="Search..."
+          type="text"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+        ></Form.Control>
+        {/* <input
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
+        ></input> */}
+        <div className="search-buttons">
+          <Button onClick={handleSearch}>Search</Button>
+          <Button variant="outline-primary" onClick={clearSearch}>Clear Search</Button>
+        </div>
       </div>
+       {data && data.Search && data.Search.length !== 0 ? `I've found ${data.Search.length} results for "${searchTerm}"`
+           :"" }
+      <Container className="results-div">
+        <Row>
+          {data && data.Search && data.Search.length !== 0 ? (
+            paragraphs
+          ) : (
+            <Col>What movie are you looking for?</Col>
+          )}
+        </Row>
+      </Container>
     </div>
   );
 }
