@@ -1,20 +1,27 @@
 .App {
   text-align: center;
+
+}
+body{
+  background-image: url('./assets/pexels-suissounet-1200450.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
 }
 
 .movie-card {
   background: #f8f9fa;
   padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.search-div{
-   padding: 10px;
-  
+.search-div {
+  padding: 10px;
 }
-.search-buttons{
+.search-buttons {
   padding-top: 10px;
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
