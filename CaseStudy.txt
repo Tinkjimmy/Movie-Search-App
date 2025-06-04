@@ -1,0 +1,46 @@
+
+---
+
+## 🧾 Case Study: Movie Search App
+
+**Project Type:** Personal / Portfolio Project  
+**Tech Stack:** React, Bootstrap, OMDb API  
+**Duration:** 1–2 days
+
+---
+
+### 🎯 **Goal**
+
+Create a clean, user-friendly interface for searching movies using the OMDb API. Practice API integration, React state management, and component-based architecture.
+
+---
+
+### ⚙️ **Functionality Overview**
+
+- **Search Function:** Captures user input and fetches matching movies.
+- **Responsive Grid:** Uses Bootstrap to layout movie cards in a responsive grid.
+- **Detail Modal:** On click, fetches and displays additional details for the selected movie.
+- **Styling:** Full background image, Bootstrap components, and custom CSS for polish.
+
+---
+
+### 🧪 Challenges & Solutions
+
+| Challenge | Solution |
+|----------|----------|
+| React Modal not opening | Used `onClick` instead of incorrect `onSelect` on movie card |
+| Image path issues in CSS | Moved background image to `src/assets/` for proper bundling |
+| API key exposure | Stored API key in `.env` and accessed via `process.env.REACT_APP_OMDB_API_KEY` |
+
+---
+
+### 🔮 Potential Additions
+
+- Pagination for long search results
+- Improved error display for failed searches
+- Loading spinner animation
+- Local storage for "favorite" movies
+
+---
+
+Let me know if you want me to help you create the actual `Navbar.js`, add the screenshot image, or deploy it!
